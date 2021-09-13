@@ -5,9 +5,15 @@ function Title({
   minutesToDuration,
   focusDuration,
   secondsToDuration,
+  breakDuration,
 }) {
   if (session) {
-    const barPercentage = (session.timeRemaining / (focusDuration * 60)) * 100;
+    let barPercentage;
+    session.label === "Focusing"
+      ? (barPercentage =
+          100 - (session.timeRemaining / (focusDuration * 60)) * 100)
+      : (barPercentage =
+          100 - (session.timeRemaining / (breakDuration * 60)) * 100);
     return (
       <>
         <div className="row mb-2">
@@ -30,7 +36,7 @@ function Title({
                 role="progressbar"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                aria-valuenow="0" // TODO: Increase aria-valuenow as elapsed time increases
+                aria-valuenow={barPercentage} // TODO: Increase aria-valuenow as elapsed time increases
                 style={{ width: `${barPercentage}%` }} // TODO: Increase width % as elapsed time increases
               />
             </div>
