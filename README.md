@@ -6,6 +6,7 @@ Front-end web application built in JavaScript and React, designed to allow user 
 * User can set both focus and break periods to customize pomodoro timer
 * Alarms will sound at the end of both periods
 * Any time a period is in session, a progress bar will display and automatically update according to time remaining
+* User can use increment, decrement, stop, and play buttons, which will automatically disable if not usable, contingent on current session state
 
 ## Screenshot
 
